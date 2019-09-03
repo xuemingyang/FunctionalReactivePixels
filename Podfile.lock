@@ -1,109 +1,68 @@
 PODS:
-  - 500px-iOS-api (1.0.4)
-  - libextobjc (0.3):
-    - libextobjc/EXTADT
-    - libextobjc/EXTAnnotation
-    - libextobjc/EXTAspect
-    - libextobjc/EXTBlockMethod
-    - libextobjc/EXTBlockTarget
-    - libextobjc/EXTConcreteProtocol
-    - libextobjc/EXTDispatchObject
-    - libextobjc/EXTFinalMethod
-    - libextobjc/EXTKeyPathCoding
-    - libextobjc/EXTMaybe
-    - libextobjc/EXTMixin
-    - libextobjc/EXTMultimethod
-    - libextobjc/EXTMultiObject
-    - libextobjc/EXTNil
-    - libextobjc/EXTPassthrough
-    - libextobjc/EXTPrivateMethod
-    - libextobjc/EXTProtocolCategory
-    - libextobjc/EXTSafeCategory
-    - libextobjc/EXTScope
-    - libextobjc/EXTSelectorChecking
-    - libextobjc/EXTSwizzle
-    - libextobjc/EXTSynthesize
-    - libextobjc/EXTTuple
-    - libextobjc/EXTVarargs
-    - libextobjc/NSInvocation+EXT
-    - libextobjc/NSMethodSignature+EXT
+  - 500px-iOS-api (1.0.5)
+  - libextobjc (0.6):
+    - libextobjc/EXTADT (= 0.6)
+    - libextobjc/EXTConcreteProtocol (= 0.6)
+    - libextobjc/EXTKeyPathCoding (= 0.6)
+    - libextobjc/EXTNil (= 0.6)
+    - libextobjc/EXTSafeCategory (= 0.6)
+    - libextobjc/EXTScope (= 0.6)
+    - libextobjc/EXTSelectorChecking (= 0.6)
+    - libextobjc/EXTSynthesize (= 0.6)
+    - "libextobjc/NSInvocation+EXT (= 0.6)"
+    - "libextobjc/NSMethodSignature+EXT (= 0.6)"
+    - libextobjc/RuntimeExtensions (= 0.6)
+    - libextobjc/UmbrellaHeader (= 0.6)
+  - libextobjc/EXTADT (0.6):
     - libextobjc/RuntimeExtensions
-    - libextobjc/UmbrellaHeader
-  - libextobjc/EXTADT (0.3):
+  - libextobjc/EXTConcreteProtocol (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTAnnotation (0.3):
+  - libextobjc/EXTKeyPathCoding (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTAspect (0.3):
+  - libextobjc/EXTNil (0.6):
     - libextobjc/RuntimeExtensions
-    - libffi
-  - libextobjc/EXTBlockMethod (0.3):
+  - libextobjc/EXTSafeCategory (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTBlockTarget (0.3):
+  - libextobjc/EXTScope (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTConcreteProtocol (0.3):
+  - libextobjc/EXTSelectorChecking (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTDispatchObject (0.3):
+  - libextobjc/EXTSynthesize (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTFinalMethod (0.3):
+  - "libextobjc/NSInvocation+EXT (0.6)":
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTKeyPathCoding (0.3):
+  - "libextobjc/NSMethodSignature+EXT (0.6)":
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTMaybe (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTMixin (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTMultimethod (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTMultiObject (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTNil (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTPassthrough (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTPrivateMethod (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTProtocolCategory (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSafeCategory (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTScope (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSelectorChecking (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSwizzle (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSynthesize (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTTuple (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTVarargs (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/NSInvocation+EXT (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/NSMethodSignature+EXT (0.3):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/RuntimeExtensions (0.3)
-  - libextobjc/UmbrellaHeader (0.3)
-  - libffi (3.0.13)
-  - ReactiveCocoa (2.1):
+  - libextobjc/RuntimeExtensions (0.6)
+  - libextobjc/UmbrellaHeader (0.6)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.1):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.1)
-  - SVProgressHUD (0.9)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
-  - 500px-iOS-api (= 1.0.4)
-  - libextobjc (= 0.3)
-  - ReactiveCocoa (= 2.1)
-  - SVProgressHUD (= 0.9)
+  - 500px-iOS-api
+  - libextobjc
+  - ReactiveCocoa
+  - SVProgressHUD
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - 500px-iOS-api
+    - libextobjc
+    - ReactiveCocoa
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
-  500px-iOS-api: fde71ddd4a05f06b94b8ec7c29bbcd2e589b7e70
-  libextobjc: 820a79dbbbc498611e04fffd07d2d52a5588e7ac
-  libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
-  ReactiveCocoa: b686fa735c28c2dc7311fbd2f0895b4d4ae07360
-  SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
+  500px-iOS-api: d9e46cb6300cef1a12964641374aa467d3cfb891
+  libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-COCOAPODS: 0.26.2
+PODFILE CHECKSUM: c3c085c25ce2e3bba77f43e8eb05227026c56d7b
+
+COCOAPODS: 1.7.5

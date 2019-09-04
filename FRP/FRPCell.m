@@ -12,8 +12,6 @@
 @interface FRPCell ()
 
 @property (nonatomic, weak) UIImageView *imageView;
-// Note: This needs to be strong 
-@property (nonatomic, strong) RACDisposable *subscription;
 
 @end
 
@@ -32,22 +30,12 @@
     imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.contentView addSubview:imageView];
     self.imageView = imageView;
+
+    RAC(self.imageView, image) = [[RACObserve(self, photoModel.thumbnailData) ignore:nil] map:^(NSData *data) {
+        return [UIImage imageWithData:data];
+    }];
     
     return self;
-}
-
--(void)prepareForReuse {
-    [super prepareForReuse];
-    
-    [self.subscription dispose], self.subscription = nil;
-}
-
--(void)setPhotoModel:(FRPPhotoModel *)photoModel {
-    self.subscription = [[[RACObserve(photoModel, thumbnailData) filter:^BOOL(id value) {
-        return ![value isKindOfClass:[NSNull class]];
-    }] map:^id(id value) {
-        return [UIImage imageWithData:value];
-    }] setKeyPath:@keypath(self.imageView, image) onObject:self.imageView];
 }
 
 @end

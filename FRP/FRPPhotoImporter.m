@@ -12,18 +12,17 @@
 @implementation FRPPhotoImporter
 
 +(NSURLRequest *)popularURLRequest {
-    return [AppDelegate.apiHelper urlRequestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:100 page:0 photoSizes:PXPhotoModelSizeThumbnail sortOrder:PXAPIHelperSortOrderRating except:PXPhotoModelCategoryNude];
+    return [[PXRequest apiHelper] urlRequestForPhotoFeature:PXAPIHelperPhotoFeaturePopular resultsPerPage:100 page:0 photoSizes:PXPhotoModelSizeThumbnail sortOrder:PXAPIHelperSortOrderRating except:PXPhotoModelCategoryNude];
 }
 
 +(NSURLRequest *)photoURLRequest:(FRPPhotoModel *)photoModel {
-    return [AppDelegate.apiHelper urlRequestForPhotoID:photoModel.identifier.integerValue];
+    return [[PXRequest apiHelper] urlRequestForPhotoID:photoModel.identifier.integerValue];
 }
 
-+(RACSubject *)importPhotos {
-    RACSubject *subject = [RACSubject subject];
-    
++(RACSignal *)importPhotos {
     NSURLRequest *request = [self popularURLRequest];
     
+<<<<<<< HEAD
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (data) {
             id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -73,24 +72,73 @@
 +(RACSubject *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
     RACSubject *subject = [RACSubject subject];
     
-    NSURLRequest *request = [self photoURLRequest:photoModel];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (data) {
-            id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil][@"photo"];
+=======
+    return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+        return data;
+    }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
+        id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        return [[[results[@"photos"] rac_sequence] map:^id(NSDictionary *photoDictionary) {
+            FRPPhotoModel *model = [FRPPhotoModel new];
             
-            [self configurePhotoModel:photoModel withDictionary:results];
-            [self downloadFullsizedImageForPhotoModel:photoModel];
+            [self configurePhotoModel:model withDictionary:photoDictionary];
+            [self downloadThumbnailForPhotoModel:model];
             
-            [subject sendNext:photoModel];
-            [subject sendCompleted];
-        }
-        else {
-            [subject sendError:connectionError];
-        }
-    }];
-    
-    return subject;
+            return model;
+        }] array];
+    }] publish] autoconnect];
 }
+
++(RACSignal *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
+>>>>>>> feature/mvvm
+    NSURLRequest *request = [self photoURLRequest:photoModel];
+    return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+        return data;
+    }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
+        id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil][@"photo"];
+        
+        [self configurePhotoModel:photoModel withDictionary:results];
+        [self downloadFullsizedImageForPhotoModel:photoModel];
+        
+        return photoModel;
+    }] publish] autoconnect];
+}
+
++(RACSignal *)logInWithUsername:(NSString *)username password:(NSString *)password {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [PXRequest authenticateWithUserName:username password:password completion:^(BOOL success) {
+            if (success) {
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:[NSError errorWithDomain:@"500px API" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Could not log in."}]];
+            }
+        }];
+        
+        // Cannot cancel request
+        return nil;
+    }];
+}
+
++(RACSignal *)voteForPhoto:(FRPPhotoModel *)photoModel {
+    return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        PXRequest *voteRequest = [PXRequest requestToVoteForPhoto:[photoModel.identifier integerValue] completion:^(NSDictionary *results, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            } else {
+                photoModel.votedFor = YES;
+                [subscriber sendCompleted];
+            }
+        }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            if (voteRequest.requestStatus == PXRequestStatusStarted) {
+                [voteRequest cancel];
+            }
+        }];
+    }] publish] autoconnect];
+}
+
+#pragma mark - Private Methods
 
 +(void)configurePhotoModel:(FRPPhotoModel *)photoModel withDictionary:(NSDictionary *)dictionary {
     // Basics details fetched with the first, basic request
@@ -100,23 +148,32 @@
     photoModel.rating = dictionary[@"rating"];
 
     photoModel.thumbnailURL = [self urlForImageSize:3 inDictionary:dictionary[@"images"]];
+<<<<<<< HEAD
     // Extneded attributes fetched with subsequent request
+=======
+    
+    if (dictionary[@"voted"]) {
+        photoModel.votedFor = [dictionary[@"voted"] boolValue];
+    }
+    
+    // Extended attributes fetched with subsequent request
+>>>>>>> feature/mvvm
     if (dictionary[@"comments_count"]) {
         photoModel.fullsizedURL = [self urlForImageSize:4 inDictionary:dictionary[@"images"]];
     }
 }
 
-+(NSString *)urlForImageSize:(NSInteger)size inDictionary:(NSDictionary *)dictioary {
++(NSString *)urlForImageSize:(NSInteger)size inDictionary:(NSDictionary *)dictionary {
     /*
      images =     (
-     {
-     size = 3;
-     url = "http://ppcdn.500px.org/49204370/b125a49d0863e0ba05d8196072b055876159f33e/3.jpg";
-     }
+        {
+            size = 3;
+            url = "http://ppcdn.500px.org/49204370/b125a49d0863e0ba05d8196072b055876159f33e/3.jpg";
+        }
      );
      */
     
-    return [[[[[dictioary rac_sequence] filter:^BOOL(NSDictionary *value) {
+    return [[[[[dictionary rac_sequence] filter:^BOOL(NSDictionary *value) {
         return [value[@"size"] integerValue] == size;
     }] map:^id(id value) {
         return value[@"url"];
@@ -124,21 +181,21 @@
 }
 
 +(void)downloadThumbnailForPhotoModel:(FRPPhotoModel *)photoModel {
-    NSAssert(photoModel.thumbnailURL, @"Thumbnail URL must not be nil");
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:photoModel.thumbnailURL]];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        photoModel.thumbnailData = data;
-    }];
+    RAC(photoModel, thumbnailData) = [self download:photoModel.thumbnailURL];
 }
 
 +(void)downloadFullsizedImageForPhotoModel:(FRPPhotoModel *)photoModel {
-    NSAssert(photoModel.fullsizedURL, @"Full sized URL must not be nil");
+    RAC(photoModel, fullsizedData) = [self download:photoModel.fullsizedURL];
+}
+
++(RACSignal *)download:(NSString *)urlString {
+    NSAssert(urlString, @"URL must not be nil");
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:photoModel.fullsizedURL]];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        photoModel.fullsizedData = data;
-    }];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    return [[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
+        return data;
+    }] deliverOn:[RACScheduler mainThreadScheduler]];
 }
 
 @end

@@ -26,7 +26,7 @@
         return data;
     }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
         id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        
+        results = [FRPPhotoImporter getResultsDict];
         return [[[results[@"photos"] rac_sequence] map:^id(NSDictionary *photoDictionary) {
             FRPPhotoModel *model = [FRPPhotoModel new];
             
@@ -37,6 +37,31 @@
         }] array];
     }] publish] autoconnect];
 }
+
++ (NSDictionary *)getResultsDict {
+    NSMutableDictionary *resDict = [NSMutableDictionary dictionary];
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < 100; i++) {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[@"name"] = [NSString stringWithFormat:@"第%d个", i];
+        dict[@"id"] = [NSString stringWithFormat:@"%d", i];
+        dict[@"images"] = @[@{
+                                @"url":@"http://img0.ph.126.net/JX4ESNkhTMWnkDnAgekxdg==/6597677796588620784.jpg",
+                                @"size":@"3"
+                                },
+                            @{
+                                @"url":@"http://img1.ph.126.net/srYQKelZKBYBsU8HObn0rQ==/3786682861788771964.jpg",
+                                @"size":@"4"
+                                }];
+        dict[@"comments_count"] = [NSString stringWithFormat:@"%d", i];
+        
+        
+        [array addObject:dict];
+    }
+    resDict[@"photos"] = array;
+    return resDict;
+}
+
 
 +(RACSignal *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
     NSURLRequest *request = [self photoURLRequest:photoModel];

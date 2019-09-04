@@ -21,58 +21,6 @@
 
 +(RACSignal *)importPhotos {
     NSURLRequest *request = [self popularURLRequest];
-    
-<<<<<<< HEAD
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (data) {
-            id results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            results = [FRPPhotoImporter getResultsDict];
-            [subject sendNext:[[[results[@"photos"] rac_sequence] map:^id(NSDictionary *photoDictionary) {
-                FRPPhotoModel *model = [FRPPhotoModel new];
-                
-                [self configurePhotoModel:model withDictionary:photoDictionary];
-                [self downloadThumbnailForPhotoModel:model];
-                
-                return model;
-            }] array]];
-            [subject sendCompleted];
-        }
-        else {
-            [subject sendError:connectionError];
-        }
-    }];
-    
-    return subject;
-}
-
-+ (NSDictionary *)getResultsDict {
-    NSMutableDictionary *resDict = [NSMutableDictionary dictionary];
-    NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < 100; i++) {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        dict[@"name"] = [NSString stringWithFormat:@"第%d个", i];
-                         dict[@"id"] = [NSString stringWithFormat:@"%d", i];
-        dict[@"images"] = @[@{
-                            @"url":@"http://img0.ph.126.net/JX4ESNkhTMWnkDnAgekxdg==/6597677796588620784.jpg",
-                            @"size":@"3"
-                           },
-                            @{
-                                @"url":@"http://img1.ph.126.net/srYQKelZKBYBsU8HObn0rQ==/3786682861788771964.jpg",
-                                @"size":@"4"
-                                }];
-        dict[@"comments_count"] = [NSString stringWithFormat:@"%d", i];
-        
-        
-        [array addObject:dict];
-    }
-    resDict[@"photos"] = array;
-    return resDict;
-}
-
-+(RACSubject *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
-    RACSubject *subject = [RACSubject subject];
-    
-=======
     return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
         return data;
     }] deliverOn:[RACScheduler mainThreadScheduler]] map:^id(NSData *data) {
@@ -90,7 +38,6 @@
 }
 
 +(RACSignal *)fetchPhotoDetails:(FRPPhotoModel *)photoModel {
->>>>>>> feature/mvvm
     NSURLRequest *request = [self photoURLRequest:photoModel];
     return [[[[[[NSURLConnection rac_sendAsynchronousRequest:request] reduceEach:^id(NSURLResponse *response, NSData *data){
         return data;
@@ -103,6 +50,31 @@
         return photoModel;
     }] publish] autoconnect];
 }
+
++ (NSDictionary *)getResultsDict {
+    NSMutableDictionary *resDict = [NSMutableDictionary dictionary];
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i = 0; i < 100; i++) {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[@"name"] = [NSString stringWithFormat:@"第%d个", i];
+        dict[@"id"] = [NSString stringWithFormat:@"%d", i];
+        dict[@"images"] = @[@{
+                                @"url":@"http://img0.ph.126.net/JX4ESNkhTMWnkDnAgekxdg==/6597677796588620784.jpg",
+                                @"size":@"3"
+                                },
+                            @{
+                                @"url":@"http://img1.ph.126.net/srYQKelZKBYBsU8HObn0rQ==/3786682861788771964.jpg",
+                                @"size":@"4"
+                                }];
+        dict[@"comments_count"] = [NSString stringWithFormat:@"%d", i];
+        
+        
+        [array addObject:dict];
+    }
+    resDict[@"photos"] = array;
+    return resDict;
+}
+
 
 +(RACSignal *)logInWithUsername:(NSString *)username password:(NSString *)password {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -148,16 +120,12 @@
     photoModel.rating = dictionary[@"rating"];
 
     photoModel.thumbnailURL = [self urlForImageSize:3 inDictionary:dictionary[@"images"]];
-<<<<<<< HEAD
-    // Extneded attributes fetched with subsequent request
-=======
     
     if (dictionary[@"voted"]) {
         photoModel.votedFor = [dictionary[@"voted"] boolValue];
     }
     
     // Extended attributes fetched with subsequent request
->>>>>>> feature/mvvm
     if (dictionary[@"comments_count"]) {
         photoModel.fullsizedURL = [self urlForImageSize:4 inDictionary:dictionary[@"images"]];
     }

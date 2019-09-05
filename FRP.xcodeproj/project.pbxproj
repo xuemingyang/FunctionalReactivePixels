@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2826EB375D254DDD8DE6EAA8 /* libPods-FRP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */; };
 		5E595111180E065F002F44FA /* FRPFullSizePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */; };
 		5E595117180E0C33002F44FA /* FRPPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595116180E0C33002F44FA /* FRPPhotoViewController.m */; };
 		5E59511A180E21E0002F44FA /* FRPPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E595119180E21E0002F44FA /* FRPPhotoDetailViewController.m */; };
@@ -30,6 +29,8 @@
 		5EBE2B1E180B07D0007B6BF3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EBE2B1C180B07D0007B6BF3 /* InfoPlist.strings */; };
 		5EBE2B20180B07D0007B6BF3 /* FRPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B1F180B07D0007B6BF3 /* FRPTests.m */; };
 		5EBE2B2B180B0AF1007B6BF3 /* FRPGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */; };
+		89D331A63D32FEF25B8C0ECE /* libPods-FRPTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18ABD55F9C1F055922888128 /* libPods-FRPTests.a */; };
+		D2FD1089DE8DC4F590C69CBB /* libPods-FRP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CDDCC1338D6C3B412AB426 /* libPods-FRP.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18ABD55F9C1F055922888128 /* libPods-FRPTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRPTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BD9B81E3BCECC1B1B792775 /* Pods-FRP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.debug.xcconfig"; path = "Target Support Files/Pods-FRP/Pods-FRP.debug.xcconfig"; sourceTree = "<group>"; };
+		44CDDCC1338D6C3B412AB426 /* libPods-FRP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53830A3EB9F4A1540DE9151E /* Pods-FRPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRPTests.debug.xcconfig"; path = "Target Support Files/Pods-FRPTests/Pods-FRPTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E59510F180E065F002F44FA /* FRPFullSizePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPFullSizePhotoViewController.h; sourceTree = "<group>"; };
 		5E595110180E065F002F44FA /* FRPFullSizePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPFullSizePhotoViewController.m; sourceTree = "<group>"; };
 		5E595115180E0C33002F44FA /* FRPPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPPhotoViewController.h; sourceTree = "<group>"; };
@@ -79,8 +84,8 @@
 		5EBE2B1F180B07D0007B6BF3 /* FRPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRPTests.m; sourceTree = "<group>"; };
 		5EBE2B29180B0AF1007B6BF3 /* FRPGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRPGalleryViewController.h; sourceTree = "<group>"; };
 		5EBE2B2A180B0AF1007B6BF3 /* FRPGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRPGalleryViewController.m; sourceTree = "<group>"; };
-		772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FRP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.xcconfig"; path = "Pods/Pods-FRP.xcconfig"; sourceTree = "<group>"; };
+		785E3F2C4C47EAD31589FF01 /* Pods-FRP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRP.release.xcconfig"; path = "Target Support Files/Pods-FRP/Pods-FRP.release.xcconfig"; sourceTree = "<group>"; };
+		DF05B7F58A7F6EFA21A9EDA3 /* Pods-FRPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRPTests.release.xcconfig"; path = "Target Support Files/Pods-FRPTests/Pods-FRPTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +96,7 @@
 				5EBE2AF7180B07D0007B6BF3 /* CoreGraphics.framework in Frameworks */,
 				5EBE2AF9180B07D0007B6BF3 /* UIKit.framework in Frameworks */,
 				5EBE2AF5180B07D0007B6BF3 /* Foundation.framework in Frameworks */,
-				2826EB375D254DDD8DE6EAA8 /* libPods-FRP.a in Frameworks */,
+				D2FD1089DE8DC4F590C69CBB /* libPods-FRP.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +108,7 @@
 				5EBE2B16180B07D0007B6BF3 /* CoreData.framework in Frameworks */,
 				5EBE2B15180B07D0007B6BF3 /* UIKit.framework in Frameworks */,
 				5EBE2B14180B07D0007B6BF3 /* Foundation.framework in Frameworks */,
+				89D331A63D32FEF25B8C0ECE /* libPods-FRPTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +160,7 @@
 				5EBE2B19180B07D0007B6BF3 /* FRPTests */,
 				5EBE2AF3180B07D0007B6BF3 /* Frameworks */,
 				5EBE2AF2180B07D0007B6BF3 /* Products */,
-				CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */,
+				DEF9DE3F93506AE86A7A0D00 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,7 +181,8 @@
 				5EBE2AF8180B07D0007B6BF3 /* UIKit.framework */,
 				5EBE2AFA180B07D0007B6BF3 /* CoreData.framework */,
 				5EBE2B12180B07D0007B6BF3 /* XCTest.framework */,
-				772BE9E4C5824F1C8E5CDC45 /* libPods-FRP.a */,
+				44CDDCC1338D6C3B412AB426 /* libPods-FRP.a */,
+				18ABD55F9C1F055922888128 /* libPods-FRPTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,6 +232,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DEF9DE3F93506AE86A7A0D00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3BD9B81E3BCECC1B1B792775 /* Pods-FRP.debug.xcconfig */,
+				785E3F2C4C47EAD31589FF01 /* Pods-FRP.release.xcconfig */,
+				53830A3EB9F4A1540DE9151E /* Pods-FRPTests.debug.xcconfig */,
+				DF05B7F58A7F6EFA21A9EDA3 /* Pods-FRPTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,11 +251,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EBE2B23180B07D0007B6BF3 /* Build configuration list for PBXNativeTarget "FRP" */;
 			buildPhases = (
-				88D5E1AB105C475DB1960326 /* Check Pods Manifest.lock */,
+				7A554EDBFF8D6EDAF8DD8D5A /* [CP] Check Pods Manifest.lock */,
 				5EBE2AED180B07D0007B6BF3 /* Sources */,
 				5EBE2AEE180B07D0007B6BF3 /* Frameworks */,
 				5EBE2AEF180B07D0007B6BF3 /* Resources */,
-				E46E00988B20439593D30FC8 /* Copy Pods Resources */,
+				E71D0AC7548C9997CD8D87F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +270,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EBE2B26180B07D0007B6BF3 /* Build configuration list for PBXNativeTarget "FRPTests" */;
 			buildPhases = (
+				26DD4DD4E2A770C03AC60031 /* [CP] Check Pods Manifest.lock */,
 				5EBE2B0D180B07D0007B6BF3 /* Sources */,
 				5EBE2B0E180B07D0007B6BF3 /* Frameworks */,
 				5EBE2B0F180B07D0007B6BF3 /* Resources */,
@@ -320,34 +340,66 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		88D5E1AB105C475DB1960326 /* Check Pods Manifest.lock */ = {
+		26DD4DD4E2A770C03AC60031 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FRPTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E46E00988B20439593D30FC8 /* Copy Pods Resources */ = {
+		7A554EDBFF8D6EDAF8DD8D5A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FRP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E71D0AC7548C9997CD8D87F1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FRP/Pods-FRP-resources.sh",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-FRP-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FRP/Pods-FRP-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -482,7 +534,7 @@
 		};
 		5EBE2B24180B07D0007B6BF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */;
+			baseConfigurationReference = 3BD9B81E3BCECC1B1B792775 /* Pods-FRP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -496,7 +548,7 @@
 		};
 		5EBE2B25180B07D0007B6BF3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF6C5FA73F5F4703A3C7C4C0 /* Pods-FRP.xcconfig */;
+			baseConfigurationReference = 785E3F2C4C47EAD31589FF01 /* Pods-FRP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -510,6 +562,7 @@
 		};
 		5EBE2B27180B07D0007B6BF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53830A3EB9F4A1540DE9151E /* Pods-FRPTests.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRP.app/FRP";
@@ -533,6 +586,7 @@
 		};
 		5EBE2B28180B07D0007B6BF3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF05B7F58A7F6EFA21A9EDA3 /* Pods-FRPTests.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRP.app/FRP";
